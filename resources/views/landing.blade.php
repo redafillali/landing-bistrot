@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Ftour Ramadan - Bistrot Burger</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAF7; color: #111827; }
+        h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+        .text-or { color: #C9A24A; }
+        .bg-or { background-color: #C9A24A; }
+        .bg-or-light { background-color: #E7D7A4; }
+        .border-or { border-color: #C9A24A; }
+        .hover-bg-or:hover { background-color: #A8863D; }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom input styles */
+        .input-field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus {
+            border-color: #C9A24A;
+            box-shadow: 0 0 0 1px #C9A24A;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-2xl font-bold tracking-tight">Bistrot Burger</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#menu" class="text-gray-600 hover:text-or transition-colors font-medium">Le Menu</a>
+                    <a href="#reservation" class="text-gray-600 hover:text-or transition-colors font-medium">Réservation</a>
+                </nav>
+                <div>
+                    <a href="#reservation" class="bg-or text-white px-5 py-2.5 rounded hover-bg-or transition-colors font-medium text-sm">
+                        Réserver ma table
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative bg-white py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col items-center text-center overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-or-light rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-or-light rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+            
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#111827] mb-6 leading-tight relative mt-8">
+                Menu Ftour Ramadan <br class="hidden sm:block" />
+                <span class="text-or">Service VIP à table & à volonté</span>
+            </h1>
+            
+            <p class="mt-4 text-xl text-gray-600 max-w-3xl mb-8 relative">
+                Vivez un Ftour d’exception chez Bistrot Burger. Un menu généreux, des bouchées variées, un trio mini tajine, des grillades et un dessert gourmand. Places limitées chaque soir.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12 relative">
+                <div class="bg-gray-50 border border-or rounded px-6 py-4 flex flex-col items-center shadow-sm">
+                    <span class="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-1">Adulte</span>
+                    <span class="font-serif text-3xl font-bold text-or">295 <span class="text-lg">DHS</span></span>
+                </div>
+                <div class="bg-gray-50 border border-gray-200 rounded px-6 py-4 flex flex-col items-center shadow-sm">
+                    <span class="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-1">Enfant</span>
+                    <span class="font-serif text-3xl font-bold text-gray-700">150 <span class="text-lg">DHS</span></span>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 relative">
+                <a href="#reservation" class="bg-or text-white px-8 py-4 rounded font-bold text-lg hover-bg-or transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto">
+                    Réserver maintenant
+                </a>
+                <a href="#menu" class="border border-gray-300 text-gray-700 px-8 py-4 rounded font-medium text-lg hover:bg-gray-50 transition-colors w-full sm:w-auto">
+                    Voir le menu
+                </a>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="bg-[#FAFAF7] py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="font-serif text-sm uppercase tracking-widest text-or font-bold mb-2">Notre Sélection</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#111827] mb-12">Le Menu Ftour</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    <!-- Boissons -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-serif text-xl font-bold border-b border-or pb-3 mb-4 inline-block pr-8">Boissons</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li>Eau plate & gazeuse</li>
+                            <li>Jus variés</li>
+                            <li>Thé à la menthe</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Bouchées -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-serif text-xl font-bold border-b border-or pb-3 mb-4 inline-block pr-8">Bouchées & Soupes</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li>Mini viennoiseries</li>
+                            <li>Canapés & Sushis</li>
+                            <li>Nems variés</li>
+                            <li>Baghrir marocain</li>
+                            <li>Harira traditionnelle</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Entrées -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-serif text-xl font-bold border-b border-or pb-3 mb-4 inline-block pr-8">Entrées</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li>Mini burger Bistrot</li>
+                            <li>Verrine salade César au poulet</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Plats -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-serif text-xl font-bold border-b border-or pb-3 mb-4 inline-block pr-8">Plats Chauds</h4>
+                        <p class="text-sm text-or mb-2 font-medium">Trio mini tajine :</p>
+                        <ul class="space-y-3 text-gray-600">
+                            <li>Tajine de viande</li>
+                            <li>Tajine de moules</li>
+                            <li>Tajine de poulet</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Grillades -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-serif text-xl font-bold border-b border-or pb-3 mb-4 inline-block pr-8">Grillades</h4>
+                        <p class="text-sm text-or mb-2 font-medium">Assortiment :</p>
+                        <ul class="space-y-3 text-gray-600">
+                            <li>Côtelettes d'agneau</li>
+                            <li>Brochette mixte</li>
+                            <li>Pilons de poulet</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Desserts -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-serif text-xl font-bold border-b border-or pb-3 mb-4 inline-block pr-8">Desserts</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li>Tiramisu Nutella</li>
+                            <li>Panacotta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservation Section -->
+        <section id="reservation" class="py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="font-serif text-sm uppercase tracking-widest text-or font-bold mb-2">Places Limitées</h2>
+                    <h3 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#111827]">Réservation Ftour</h3>
+                    <p class="mt-4 text-gray-600">Remplissez ce formulaire et nous confirmons votre réservation rapidement par téléphone ou WhatsApp.</p>
+                </div>
+
+                <div class="bg-[#FAFAF7] p-8 sm:p-12 rounded-xl shadow border border-gray-100">
+                    
+                    @if(session('success'))
+                        <div class="bg-green-50 border border-green-200 text-green-800 rounded px-4 py-4 mb-8 text-center font-medium shadow-sm">
+                            <span class="block sm:inline">{{ session('success') }}</span>
+                        </div>
+                    @endif
+
+                    @if($errors->any())
+                        <div class="bg-red-50 border border-red-200 text-red-800 rounded px-4 py-4 mb-8 shadow-sm">
+                            <p class="font-bold mb-2">Merci de vérifier les informations suivantes :</p>
+                            <ul class="list-disc ml-5 space-y-1 text-sm text-red-700">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('reservation.store') }}" class="space-y-6">
+                        @csrf
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nom" class="block text-sm font-semibold text-gray-800 mb-1">Nom <span class="text-red-500">*</span></label>
+                                <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="input-field" required>
+                            </div>
+                            <div>
+                                <label for="prenom" class="block text-sm font-semibold text-gray-800 mb-1">Prénom <span class="text-red-500">*</span></label>
+                                <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="input-field" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="telephone" class="block text-sm font-semibold text-gray-800 mb-1">Téléphone <span class="text-red-500">*</span></label>
+                                <input type="tel" name="telephone" id="telephone" value="{{ old('telephone') }}" class="input-field" placeholder="06 XX XX XX XX" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-800 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" class="input-field" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="date" class="block text-sm font-semibold text-gray-800 mb-1">Date de réservation <span class="text-red-500">*</span></label>
+                                <input type="date" name="date" id="date" value="{{ old('date') }}" min="{{ date('Y-m-d') }}" class="input-field" required>
+                            </div>
+                            <div>
+                                <label for="nombre_personnes" class="block text-sm font-semibold text-gray-800 mb-1">Nombre de personnes <span class="text-red-500">*</span></label>
+                                <input type="number" name="nombre_personnes" id="nombre_personnes" value="{{ old('nombre_personnes', 2) }}" min="1" max="30" class="input-field" required>
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <p class="text-xs text-gray-500 mb-6 flex items-start">
+                                <span class="mt-0.5 mr-2">ℹ️</span>
+                                <span>En envoyant ma demande, j’accepte d’être contacté(e) pour confirmer ma réservation. La réservation n’est confirmée qu’après validation par le restaurant.</span>
+                            </p>
+                            
+                            <button type="submit" class="w-full bg-or text-white px-8 py-4 rounded font-bold text-lg hover-bg-or transition-colors shadow-sm cursor-pointer">
+                                Envoyer ma demande
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reassurance Section -->
+        <section class="bg-[#111827] text-white py-16 px-4">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
+                <div class="p-6 md:px-10 flex-1 w-full">
+                    <div class="text-or text-3xl mb-3">VIP</div>
+                    <h4 class="font-serif font-bold text-lg mb-2">Service à Table</h4>
+                    <p class="text-gray-400 text-sm">Profitez d'un service exclusif, tous nos plats sont servis à volonté directamente à votre table.</p>
+                </div>
+                <div class="p-6 md:px-10 flex-1 w-full">
+                    <div class="text-or text-3xl mb-3">🌙</div>
+                    <h4 class="font-serif font-bold text-lg mb-2">Ambiance Ramadan</h4>
+                    <p class="text-gray-400 text-sm">Vivez un moment convivial et chaleureux dans un cadre exceptionnel et apaisant.</p>
+                </div>
+                <div class="p-6 md:px-10 flex-1 w-full">
+                    <div class="text-or text-3xl mb-3">✓</div>
+                    <h4 class="font-serif font-bold text-lg mb-2">Confirmation Rapide</h4>
+                    <p class="text-gray-400 text-sm">Notre équipe valide votre réservation par téléphone ou sur WhatsApp rapidement.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="font-serif text-2xl font-bold mb-4 text-or">Bistrot Burger</p>
+            <p class="text-gray-400 mb-2">Service VIP à table & à volonté</p>
+            <p class="text-gray-400 mb-6">Casablanca - Réservez vite, places limitées.</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <a href="#reservation" class="text-or hover:text-white transition-colors">Réservation</a>
+                <span class="text-gray-600">|</span>
+                <a href="#menu" class="text-or hover:text-white transition-colors">Le Menu Ftour</a>
+            </div>
+            <p class="text-gray-500 text-sm">© {{ date('Y') }} Bistrot Burger - Steak House. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
