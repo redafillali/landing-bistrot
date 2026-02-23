@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Reservations\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
 class ReservationForm
@@ -20,7 +21,6 @@ class ReservationForm
                     ->required()
                     ->numeric(),
                 TextInput::make('email')
-                    ->label('Email address')
                     ->email()
                     ->required(),
                 TextInput::make('telephone')
@@ -28,7 +28,12 @@ class ReservationForm
                     ->required(),
                 DatePicker::make('date')
                     ->required(),
-                TextInput::make('status')
+                Select::make('status')
+                    ->options([
+                        'pending' => 'En attente',
+                        'confirmed' => 'Confirmée',
+                        'cancelled' => 'Annulée',
+                    ])
                     ->required()
                     ->default('pending'),
             ]);

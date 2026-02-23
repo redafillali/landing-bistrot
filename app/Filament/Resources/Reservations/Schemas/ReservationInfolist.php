@@ -19,10 +19,17 @@ class ReservationInfolist
                     ->label('Email address'),
                 TextEntry::make('telephone'),
                 TextEntry::make('date')
-                    ->date(),
-                TextEntry::make('status'),
+                    ->date('d/m/Y'),
+                TextEntry::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'confirmed' => 'success',
+                        'cancelled' => 'danger',
+                        default => 'gray',
+                    }),
                 TextEntry::make('created_at')
-                    ->dateTime()
+                    ->dateTime('d/m/Y H:i')
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
                     ->dateTime()

@@ -16,28 +16,38 @@ class ReservationsTable
         return $table
             ->columns([
                 TextColumn::make('nom')
-                    ->searchable(),
-                TextColumn::make('prenom')
-                    ->searchable(),
-                TextColumn::make('nombre_personnes')
-                    ->numeric()
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('email')
-                    ->label('Email address')
-                    ->searchable(),
+                TextColumn::make('prenom')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('telephone')
                     ->searchable(),
+                TextColumn::make('email')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('date')
-                    ->date()
+                    ->date('d/m/Y')
+                    ->sortable(),
+                TextColumn::make('nombre_personnes')
+                    ->label('Personnes')
+                    ->numeric()
                     ->sortable(),
                 TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'confirmed' => 'success',
+                        'cancelled' => 'danger',
+                        default => 'gray',
+                    })
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
