@@ -2,11 +2,8 @@
 
 namespace App\Filament\Resources\Reservations;
 
-use App\Filament\Resources\Reservations\Pages\CreateReservation;
-use App\Filament\Resources\Reservations\Pages\EditReservation;
 use App\Filament\Resources\Reservations\Pages\ListReservations;
 use App\Filament\Resources\Reservations\Pages\ViewReservation;
-use App\Filament\Resources\Reservations\Schemas\ReservationForm;
 use App\Filament\Resources\Reservations\Schemas\ReservationInfolist;
 use App\Filament\Resources\Reservations\Tables\ReservationsTable;
 use App\Models\Reservation;
@@ -24,9 +21,9 @@ class ReservationResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'Reservation';
 
-    public static function form(Schema $schema): Schema
+    public static function canCreate(): bool
     {
-        return ReservationForm::configure($schema);
+        return false;
     }
 
     public static function infolist(Schema $schema): Schema
@@ -50,9 +47,7 @@ class ReservationResource extends Resource
     {
         return [
             'index' => ListReservations::route('/'),
-            'create' => CreateReservation::route('/create'),
             'view' => ViewReservation::route('/{record}'),
-            'edit' => EditReservation::route('/{record}/edit'),
         ];
     }
 }
