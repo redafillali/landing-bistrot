@@ -8,32 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAF7; color: #111827; }
-        h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
-        .text-or { color: #C9A24A; }
-        .bg-or { background-color: #C9A24A; }
-        .bg-or-light { background-color: #E7D7A4; }
-        .border-or { border-color: #C9A24A; }
-        .hover-bg-or:hover { background-color: #A8863D; }
-        
-        /* Smooth scrolling */
-        html { scroll-behavior: smooth; }
-        
-        /* Custom input styles */
-        .input-field {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #D1D5DB;
-            border-radius: 0.375rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .input-field:focus {
-            border-color: #C9A24A;
-            box-shadow: 0 0 0 1px #C9A24A;
-        }
-    </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
 
