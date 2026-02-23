@@ -147,71 +147,7 @@
                 </div>
 
                 <div class="bg-[#FAFAF7] p-8 sm:p-12 rounded-xl shadow border border-gray-100">
-                    
-                    @if(session('success'))
-                        <div class="bg-green-50 border border-green-200 text-green-800 rounded px-4 py-4 mb-8 text-center font-medium shadow-sm">
-                            <span class="block sm:inline">{{ session('success') }}</span>
-                        </div>
-                    @endif
-
-                    @if($errors->any())
-                        <div class="bg-red-50 border border-red-200 text-red-800 rounded px-4 py-4 mb-8 shadow-sm">
-                            <p class="font-bold mb-2">Merci de vérifier les informations suivantes :</p>
-                            <ul class="list-disc ml-5 space-y-1 text-sm text-red-700">
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('reservation.store') }}" class="space-y-6">
-                        @csrf
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="nom" class="block text-sm font-semibold text-gray-800 mb-1">Nom <span class="text-red-500">*</span></label>
-                                <input type="text" name="nom" id="nom" value="{{ old('nom') }}" class="input-field" required>
-                            </div>
-                            <div>
-                                <label for="prenom" class="block text-sm font-semibold text-gray-800 mb-1">Prénom <span class="text-red-500">*</span></label>
-                                <input type="text" name="prenom" id="prenom" value="{{ old('prenom') }}" class="input-field" required>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="telephone" class="block text-sm font-semibold text-gray-800 mb-1">Téléphone <span class="text-red-500">*</span></label>
-                                <input type="tel" name="telephone" id="telephone" value="{{ old('telephone') }}" class="input-field" placeholder="06 XX XX XX XX" required>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-semibold text-gray-800 mb-1">Email <span class="text-red-500">*</span></label>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}" class="input-field" required>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="date" class="block text-sm font-semibold text-gray-800 mb-1">Date de réservation <span class="text-red-500">*</span></label>
-                                <input type="date" name="date" id="date" value="{{ old('date') }}" min="{{ date('Y-m-d') }}" class="input-field" required>
-                            </div>
-                            <div>
-                                <label for="nombre_personnes" class="block text-sm font-semibold text-gray-800 mb-1">Nombre de personnes <span class="text-red-500">*</span></label>
-                                <input type="number" name="nombre_personnes" id="nombre_personnes" value="{{ old('nombre_personnes', 2) }}" min="1" max="30" class="input-field" required>
-                            </div>
-                        </div>
-
-                        <div class="pt-4">
-                            <p class="text-xs text-gray-500 mb-6 flex items-start">
-                                <span class="mt-0.5 mr-2">ℹ️</span>
-                                <span>En envoyant ma demande, j’accepte d’être contacté(e) pour confirmer ma réservation. La réservation n’est confirmée qu’après validation par le restaurant.</span>
-                            </p>
-                            
-                            <button type="submit" class="w-full bg-or text-white px-8 py-4 rounded font-bold text-lg hover-bg-or transition-colors shadow-sm cursor-pointer">
-                                Envoyer ma demande
-                            </button>
-                        </div>
-                    </form>
+                    <livewire:reservation-form />
                 </div>
             </div>
         </section>
