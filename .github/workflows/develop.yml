@@ -1,0 +1,57 @@
+name: Deploy – develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy via FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      # ─── Checkout ────────────────────────────────────────────────────────────
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ─── PHP ─────────────────────────────────────────────────────────────────
+      - name: Set up PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo, pdo_mysql, xml, curl, zip, bcmath, intl
+          coverage: none
+
+      # ─── Node / Vite ─────────────────────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Build assets (Vite)
+        run: npm run build
+
+      # ─── Strip dev dependencies before deploy ────────────────────────────────
+      - name: Remove dev dependencies (production)
+        run: | 
+          composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+        
+      # ─── FTP Deploy ──────────────────────────────────────────────────────────
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/
+
+
+    # ─── Clear cache on server ────────────────────────────────────────────────
+      #- name: clear cache on server using cUrl
+      #  run: |
+      #    curl -X GET https://snr.refdigital.ma/clear-cache
