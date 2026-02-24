@@ -5,6 +5,10 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Reservation;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CustomerReservationConfirmation;
+use App\Mail\AdminReservationNotification;
+
 class ReservationForm extends Component
 {
     public $nom = '';
@@ -28,7 +32,14 @@ class ReservationForm extends Component
         $validatedData = $this->validate();
         
         $validatedData['status'] = 'pending';
-        Reservation::create($validatedData);
+        $reservation = Reservation::create($validatedData);
+
+        // Send email to customer
+        Mail::to($this->email)->send(new CustomerReservationConfirmation($reservation));
+
+        // Send email to admin
+        $adminEmail = config('mail.from.address');
+        Mail::to($adminEmail)->send(new AdminReservationNotification($reservation));
 
         session()->flash('success', 'Merci ! Votre demande est envoyée. Nous vous confirmons par téléphone/WhatsApp.');
 
