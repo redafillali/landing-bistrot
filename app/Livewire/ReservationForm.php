@@ -38,7 +38,7 @@ class ReservationForm extends Component
         //Mail::to($this->email)->send(new CustomerReservationConfirmation($reservation));
 
         // Send email to admin
-        Mail::to(['reda.elfillali@gmail.com'])
+        Mail::to(['reda.elfillali@gmail.com', 'redouane.aguida@gmail.com'])
         ->send(new AdminReservationNotification($reservation));
 
         session()->flash('success', 'Merci ! Votre demande est envoyée. Nous vous confirmons par téléphone/WhatsApp.');
