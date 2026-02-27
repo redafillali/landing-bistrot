@@ -35,7 +35,7 @@ class ReservationForm extends Component
         $reservation = Reservation::create($validatedData);
 
         // Send email to customer
-        //Mail::to($this->email)->send(new CustomerReservationConfirmation($reservation));
+        Mail::to($this->email)->send(new CustomerReservationConfirmation($reservation));
 
         // Send email to admin
         Mail::to(['reda.elfillali@gmail.com', 'redouane.aguida@gmail.com'])

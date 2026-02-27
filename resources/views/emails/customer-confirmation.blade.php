@@ -1,4 +1,9 @@
 <x-mail::message>
+
+<div style="text-align: center; margin-bottom: 20px;">
+    <img src="{{ Vite::asset('resources/assets/images/logo.jpg') }}" alt="Bistrot Burger" style="max-width: 200px; height: auto;">
+</div>
+
 # Merci pour votre réservation !
 
 Bonjour {{ $reservation->prenom }} {{ $reservation->nom }},
